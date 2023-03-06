@@ -8,7 +8,7 @@
 		box-sizing: border-box
 
 *::-webkit-input-placeholder
-	color: #505050
+	color: #A1A1A1
 	opacity: 1
 	transition: opacity .25s
 
@@ -16,7 +16,7 @@
 	opacity: 0
 
 *:-moz-placeholder
-	color: #505050
+	color: #A1A1A1
 	opacity: 1
 	transition: opacity .25s
 
@@ -24,7 +24,7 @@
 	opacity: 0
 
 *::-moz-placeholder
-	color: #505050
+	color: #A1A1A1
 	opacity: 1
 	transition: opacity .25s
 
@@ -32,7 +32,7 @@
 	opacity: 0
 
 *:-ms-input-placeholder
-	color: #505050
+	color: #A1A1A1
 	opacity: 1
 	transition: opacity .25s
 
@@ -41,10 +41,10 @@
 
 body input:focus:required:invalid,
 body textarea:focus:required:invalid
-	color: #505050
+	color: #A1A1A1
 body input:required:valid,
 body textarea:required:valid
-	color: #505050
+	color: #A1A1A1
 
 *, body
 	-webkit-tap-highlight-color: rgba(0,0,0,0)
@@ -63,10 +63,164 @@ body
 	overflow-x: hidden
 	opacity: 1
 
-h1,h2,h3,h4,h5,h6
-	font-size: 1em
-	font-weight: normal
-	margin: 0
-
-.container
+.wrapper
+	width: 100%
+	height: 100%
 	display: flex
+	justify-content: center
+	align-items: center
+
+.btn
+	max-width: 235px
+	width: 100%
+	height: 70px
+	background-color: #f00
+	border: 0
+	cursor: pointer
+	display: flex
+	align-items: center
+	justify-content: center
+	text-align: center
+	text-decoration: none
+	transition: .3s ease-in-out
+	color: #fff
+	border-radius: 6px
+	&:hover,
+	&:focus-visible
+		background-color: darken(#f00, 10%)
+
+.popup
+	max-width: 908px
+	width: 100%
+	margin: 0 15px
+	position: relative
+	background-color: #fff
+	margin-top: auto
+	margin-bottom: auto
+	z-index: 9999
+	border-radius: 20px
+	padding-left: 30px
+	padding-right: 52px
+	padding-top: 50px
+	display: flex
+	flex-wrap: wrap
+	@include media-breakpoint-down(sm)
+		padding-left: 20px
+		padding-right: 20px
+		padding-top: 20px
+	&__title
+		flex: 1 100%
+		font-size: 35px
+		color: #000
+		margin-bottom: 50px
+		font-weight: bold
+		@include media-breakpoint-down(sm)
+			text-align: center
+			font-size: 20px
+			margin-bottom: 25px
+	&__img
+		margin-right: 50px
+		font-size: 0
+		flex: 1
+		@include media-breakpoint-down(sm)
+			order: -1
+			text-align: center
+			margin-bottom: 30px
+		img
+			max-width: 100%
+			height: auto
+	&__form
+		flex: 0 350px
+		margin-left: auto
+		padding-bottom: 30px
+		@include media-breakpoint-down(sm)
+			flex: 1 100%
+		&-text
+			text-align: center
+			white-space: pre
+			font-size: 12px
+			color: #818181
+	&__input
+		margin-bottom: 25px
+		@include media-breakpoint-down(sm)
+			margin-bottom: 20px
+		&:last-child
+			margin-bottom: 0
+		label
+			font-size: 15px
+			display: inline-block
+			margin-bottom: 8px
+			@include media-breakpoint-down(sm)
+				font-size: 13px
+		input
+			width: 100%
+			height: 52px
+			padding: 0 18px
+			border: 1px solid #aeaeae
+			border-radius: 4px
+			font-size: 19px
+			font-family: inherit
+			@include media-breakpoint-down(sm)
+				font-size: 16px
+				height: 41px
+	&__btn
+		width: 100%
+		height: 70px
+		border: 0
+		background-color: #00d56a
+		display: flex
+		align-items: center
+		justify-content: center
+		font-family: inherit
+		font-size: 25px
+		color: #fff
+		font-weight: 500
+		border-radius: 4px
+		margin-bottom: 15px
+		cursor: pointer
+		transition: .3s ease-in-out
+		box-shadow: 0 6px 0 rgba(#00AB5B, 1)
+		position: relative
+		top: 0
+		@include media-breakpoint-down(sm)
+			height: 57px
+			font-size: 20px
+		&:active
+			top: 6px
+			box-shadow: 0 0 0 rgba(#00AB5B, 1)
+		img
+			margin-left: 20px
+	&__close
+		position: absolute
+		top: 20px
+		right: 18px
+		background: 0
+		cursor: pointer
+		border: 0
+		padding: 0
+		font-size: 0
+		line-height: 0
+		transition: .3s ease-in-out
+		&:hover,
+		&:focus-visible
+			opacity: 0.5
+	&__wrapper
+		display: none
+		position: fixed
+		z-index: 99999
+		left: 0
+		top: 0
+		width: 100%
+		height: 100%
+		flex-direction: column
+		align-items: center
+		overflow: auto
+		overflow-x: hidden
+		.overlay
+			position: fixed
+			z-index: -1
+			left: 0
+			top: 0
+			width: 100vw
+			height: 100vh
+			background-color: rgba(#000, .8)
